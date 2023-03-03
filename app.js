@@ -69,6 +69,8 @@ function sendEmail({
 }
 
 app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname), "public", "index.html");
+
   sendEmail()
     .then((response) => res.send(response.message))
     .catch((error) => res.status(500).send(error.message));
