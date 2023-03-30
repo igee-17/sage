@@ -1,6 +1,13 @@
 const express = require("express");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
+const {
+  sendEmail,
+  sendHome,
+  sendBooking,
+  sendCorporate,
+  sendFeedback,
+} = require("./modules/sendEmail");
 
 const path = require("path");
 
@@ -20,54 +27,6 @@ app.use((req, res, next) => {
   next();
 });
 
-function sendEmail({
-  recipient_email,
-  firstname,
-  lastname,
-  email,
-  phone,
-  subject,
-  message,
-  formName,
-  fields,
-}) {
-  return new Promise((resolve, reject) => {
-    var transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: `${process.env.EMAIL}`,
-        pass: `${process.env.PASSWORD}`,
-      },
-    });
-
-    const mail_configs = {
-      from: "igbagboleye@gmail.com",
-      to: recipient_email,
-      subject: subject,
-      text: formName,
-      html: `<body>
-      <h2>${subject}</h2>
-      <ul style="font-size:1.1em">
-       <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[0]}</b>: ${firstname}</span></li><br/>
-       <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[1]}</b>: ${lastname}</span></li><br/>
-       <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[2]}</b>: ${email}</span></li><br/>
-       <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[3]}</b>: ${phone}</span></li><br/>
-       <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[4]}</b>: ${subject}</span></li><br/>
-       <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[5]}</b>: ${message}</span></li><br/>
-       </ul>
-       </body>`,
-    };
-
-    transporter.sendMail(mail_configs, function (error, info) {
-      if (error) {
-        console.log(error);
-        return reject({ message: "an error occured" });
-      }
-      return resolve({ message: "email sent successfully" });
-    });
-  });
-}
-
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname), "public", "index.html");
 
@@ -76,8 +35,35 @@ app.get("/", (req, res) => {
     .catch((error) => res.status(500).send(error.message));
 });
 
+// CONTACT
 app.post("/send_email", (req, res) => {
   sendEmail(req.body)
+    .then((response) => res.send(response.message))
+    .catch((error) => res.status(500).send(error.message));
+});
+
+// HOME SERVICE
+app.post("/send_home", (req, res) => {
+  sendHome(req.body)
+    .then((response) => res.send(response.message))
+    .catch((error) => res.status(500).send(error.message));
+});
+
+// APPOINTMENT BOOKING
+app.post("/send_booking", (req, res) => {
+  sendBooking(req.body)
+    .then((response) => res.send(response.message))
+    .catch((error) => res.status(500).send(error.message));
+});
+
+// CORPORATE PACKAGE
+app.post("/send_corporate", (req, res) => {
+  sendCorporate(req.body)
+    .then((response) => res.send(response.message))
+    .catch((error) => res.status(500).send(error.message));
+});
+app.post("/send_feedback", (req, res) => {
+  sendFeedback(req.body)
     .then((response) => res.send(response.message))
     .catch((error) => res.status(500).send(error.message));
 });
