@@ -167,6 +167,7 @@ function sendCorporate({
   phone,
   heathPackage,
   message,
+  noOfDoctors,
   formName,
   recipient_email,
   fields,
@@ -198,6 +199,7 @@ function sendCorporate({
        <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[7]}</b>: ${phone}</span></li><br/>
        <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[8]}</b>: ${heathPackage}</span></li><br/>
        <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[9]}</b>: ${message}</span></li><br/>
+       <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[10]}</b>: ${noOfDoctors}</span></li><br/>
        </ul>
        </body>`,
     };
