@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.10e21e2d.css",
-    "main.js": "/static/js/main.de3d8e4f.js",
+    "main.css": "/static/css/main.9f7344f5.css",
+    "main.js": "/static/js/main.525e340b.js",
     "static/media/microscope.jpg": "/static/media/microscope.ff54f726eec182353280.jpg",
     "static/media/microbiology.jpg": "/static/media/microbiology.915d492a69982f0cf2b8.jpg",
     "static/media/xray.jpg": "/static/media/xray.573e3865de364409da23.jpg",
@@ -38,11 +38,11 @@
     "static/media/echocardiogram.jpg": "/static/media/echocardiogram.b7eb4f818cb1653dad4a.jpg",
     "static/media/logo-icon.svg": "/static/media/logo-icon.80d26e6fcc2d7cdaf1c1f20598c707c7.svg",
     "index.html": "/index.html",
-    "main.10e21e2d.css.map": "/static/css/main.10e21e2d.css.map",
-    "main.de3d8e4f.js.map": "/static/js/main.de3d8e4f.js.map"
+    "main.9f7344f5.css.map": "/static/css/main.9f7344f5.css.map",
+    "main.525e340b.js.map": "/static/js/main.525e340b.js.map"
   },
   "entrypoints": [
-    "static/css/main.10e21e2d.css",
-    "static/js/main.de3d8e4f.js"
+    "static/css/main.9f7344f5.css",
+    "static/js/main.525e340b.js"
   ]
 }
