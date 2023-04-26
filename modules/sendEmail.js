@@ -9,6 +9,7 @@ function sendEmail({
   phone,
   subject,
   message,
+  referral,
   formName,
   fields,
 }) {
@@ -35,6 +36,7 @@ function sendEmail({
        <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[3]}</b>: ${phone}</span></li><br/>
        <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[4]}</b>: ${subject}</span></li><br/>
        <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[5]}</b>: ${message}</span></li><br/>
+       <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[6]}</b>: ${referral}</span></li><br/>
        </ul>
        </body>`,
     };
@@ -109,6 +111,7 @@ function sendBooking({
   phone,
   email,
   weight,
+  referral,
   formName,
   recipient_email,
   fields,
@@ -141,6 +144,7 @@ function sendBooking({
        <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[8]}</b>: ${phone}</span></li><br/>
        <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[9]}</b>: ${email}</span></li><br/>
        <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[10]}</b>: ${weight}</span></li><br/>
+       <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[11]}</b>: ${referral}</span></li><br/>
        </ul>
        </body>`,
     };
