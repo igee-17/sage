@@ -343,10 +343,55 @@ function sendFeedback({
   });
 }
 
+// =====================================================================================
+// ATTIJARA ENDPOINTS
+// =====================================================================================
+
+function contact({ name, email, subject, message, recipient_email, fields }) {
+  // console.log(recipient_email);
+
+  return new Promise((resolve, reject) => {
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: `${process.env.ATTIJARA_EMAIL}`,
+        pass: `${process.env.ATTIJARA_PASSWORD}`,
+      },
+    });
+
+    const mail_configs = {
+      from: process.env.ATTIJARA_EMAIL,
+      to: recipient_email,
+      subject: subject,
+      text: "Contact",
+      html: `<body>
+      <h2>New Contact From User</h2>
+      <ul style="font-size:1.1em">
+       <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[0]}</b>: ${name}</span></li><br/>
+       <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[1]}</b>: ${email}</span></li><br/>
+       <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[2]}</b>: ${subject}</span></li><br/>
+       <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[3]}</b>: ${message}</span></li><br/>
+       </ul>
+       </body>`,
+    };
+
+    transporter.sendMail(mail_configs, function (error, info) {
+      if (error) {
+        console.log(error);
+        return reject({ message: "an error occured" });
+      }
+      return resolve({ message: "email sent successfully" });
+    });
+  });
+}
+
 module.exports = {
   sendEmail,
   sendHome,
   sendBooking,
   sendCorporate,
   sendFeedback,
+
+  // attijara
+  contact,
 };

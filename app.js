@@ -7,6 +7,7 @@ const {
   sendBooking,
   sendCorporate,
   sendFeedback,
+  contact,
 } = require("./modules/sendEmail");
 
 const path = require("path");
@@ -62,14 +63,26 @@ app.post("/send_corporate", (req, res) => {
     .then((response) => res.send(response.message))
     .catch((error) => res.status(500).send(error.message));
 });
+
+// FEEDBACK
 app.post("/send_feedback", (req, res) => {
   sendFeedback(req.body)
     .then((response) => res.send(response.message))
     .catch((error) => res.status(500).send(error.message));
 });
 
-app.listen(port, () =>
-  console.log(`nodemailer is listening at http://localhost:${port}`)
+// =====================================================================================
+// ATTIJARA ENDPOINTS
+// =====================================================================================
+
+app.post("/attijara/contact", (req, res) => {
+  contact(req.body)
+    .then((response) => res.send(response.message))
+    .catch((error) => res.status(500).send(error.message));
+});
+
+app.listen(8080, () =>
+  console.log(`nodemailer is listening at http://localhost:${8080}`)
 );
 
 // var email =
