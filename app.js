@@ -81,8 +81,8 @@ app.post("/attijara/contact", (req, res) => {
     .catch((error) => res.status(500).send(error.message));
 });
 
-app.listen(8080, () =>
-  console.log(`nodemailer is listening at http://localhost:${8080}`)
+app.listen(port, () =>
+  console.log(`nodemailer is listening at http://localhost:${port}`)
 );
 
 // var email =
