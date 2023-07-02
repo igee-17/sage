@@ -365,7 +365,7 @@ function contact({ name, email, subject, message, recipient_email, fields }) {
       subject: subject,
       text: "Contact",
       html: `<body>
-      <h2>New Contact From User</h2>
+      <h2>New Message From User</h2>
       <ul style="font-size:1.1em">
        <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[0]}</b>: ${name}</span></li><br/>
        <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[1]}</b>: ${email}</span></li><br/>
