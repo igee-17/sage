@@ -365,14 +365,31 @@ function contact({ name, email, subject, message, recipient_email, fields }) {
       subject: subject,
       text: "Contact",
       html: `<body>
-      <h2>New Message From User</h2>
-      <ul style="font-size:1.1em">
-       <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[0]}</b>: ${name}</span></li><br/>
-       <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[1]}</b>: ${email}</span></li><br/>
-       <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[2]}</b>: ${subject}</span></li><br/>
-       <li><span style="padding:4px 0;color:#aaa;font-size:1.2em;font-weight:400"><b>${fields[3]}</b>: ${message}</span></li><br/>
-       </ul>
-       </body>`,
+      <h2 style="margin-bottom: 20px;">New Message From User</h2>
+      <ul style="font-size: 1.1em; list-style-type: none; padding: 0;">
+        <li style="margin-bottom: 10px;">
+          <span style="display: block; color: #aaa; font-size: 1.2em; font-weight: 400;">
+            <b style="text-transform: capitalize;">${fields[0]}:</b> ${name}
+          </span>
+        </li>
+        <li style="margin-bottom: 10px;">
+          <span style="display: block; color: #aaa; font-size: 1.2em; font-weight: 400;">
+            <b style="text-transform: capitalize;">${fields[1]}:</b> ${email}
+          </span>
+        </li>
+        <li style="margin-bottom: 10px;">
+          <span style="display: block; color: #aaa; font-size: 1.2em; font-weight: 400;">
+            <b style="text-transform: capitalize;">${fields[2]}:</b> ${subject}
+          </span>
+        </li>
+        <li style="margin-bottom: 10px;">
+          <span style="display: block; color: #aaa; font-size: 1.2em; font-weight: 400;">
+            <b style="text-transform: capitalize;">${fields[3]}:</b> ${message}
+          </span>
+        </li>
+      </ul>
+    </body>
+    `,
     };
 
     transporter.sendMail(mail_configs, function (error, info) {
