@@ -402,6 +402,361 @@ function contact({ name, email, subject, message, recipient_email, fields }) {
   });
 }
 
+// =====================================================================================
+// PAC WEBSITE ENDPOINTS
+// =====================================================================================
+
+function gettingStarted({
+  firstName,
+  lastName,
+  email,
+  address,
+  phone,
+  message,
+  recipient_email,
+  fields,
+}) {
+  // console.log(recipient_email);
+
+  return new Promise((resolve, reject) => {
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: `${process.env.ATTIJARA_EMAIL}`,
+        pass: `${process.env.ATTIJARA_PASSWORD}`,
+      },
+    });
+
+    const mail_configs = {
+      from: process.env.ATTIJARA_EMAIL,
+      to: recipient_email,
+      subject: "Getting Started Form",
+      text: "Contact",
+      html: `<body>
+      <h2 style="margin-bottom: 20px;">Alumni form</h2>
+      <ul style="font-size: 1.1em; list-style-type: none; padding: 0;">
+        <li style="margin-bottom: 10px;">
+          <span style="display: block; color: #aaa; font-size: 1.2em; font-weight: 400;">
+            <b style="text-transform: capitalize;">${fields[0]}:</b> ${firstName}
+          </span>
+        </li>
+        <li style="margin-bottom: 10px;">
+          <span style="display: block; color: #aaa; font-size: 1.2em; font-weight: 400;">
+            <b style="text-transform: capitalize;">${fields[1]}:</b> ${lastName}
+          </span>
+        </li>
+        <li style="margin-bottom: 10px;">
+          <span style="display: block; color: #aaa; font-size: 1.2em; font-weight: 400;">
+            <b style="text-transform: capitalize;">${fields[2]}:</b> ${email}
+          </span>
+        </li>
+        <li style="margin-bottom: 10px;">
+          <span style="display: block; color: #aaa; font-size: 1.2em; font-weight: 400;">
+            <b style="text-transform: capitalize;">${fields[3]}:</b> ${address}
+          </span>
+        </li>
+        <li style="margin-bottom: 10px;">
+          <span style="display: block; color: #aaa; font-size: 1.2em; font-weight: 400;">
+            <b style="text-transform: capitalize;">${fields[4]}:</b> ${phone}
+          </span>
+        </li>
+        <li style="margin-bottom: 10px;">
+          <span style="display: block; color: #aaa; font-size: 1.2em; font-weight: 400;">
+            <b style="text-transform: capitalize;">${fields[5]}:</b> ${message}
+          </span>
+        </li>
+      </ul>
+    </body>
+    `,
+    };
+
+    transporter.sendMail(mail_configs, function (error, info) {
+      if (error) {
+        console.log(error);
+        return reject({ message: "an error occured" });
+      }
+      return resolve({ message: "email sent successfully" });
+    });
+  });
+}
+
+// SEND A MESSAGE
+
+function sendMessage({
+  fullName,
+  email,
+  subject,
+  message,
+  recipient_email,
+  fields,
+}) {
+  console.log(recipient_email);
+
+  return new Promise((resolve, reject) => {
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: `${process.env.ATTIJARA_EMAIL}`,
+        pass: `${process.env.ATTIJARA_PASSWORD}`,
+      },
+    });
+
+    const mail_configs = {
+      from: process.env.ATTIJARA_EMAIL,
+      to: recipient_email,
+      subject: "Send Us a Message Form",
+      text: "Contact",
+      html: `<body>
+      <h2 style="margin-bottom: 20px;">New Message From User</h2>
+      <ul style="font-size: 1.1em; list-style-type: none; padding: 0;">
+        <li style="margin-bottom: 10px;">
+          <span style="display: block; color: #aaa; font-size: 1.2em; font-weight: 400;">
+            <b style="text-transform: capitalize;">${fields[0]}:</b> ${fullName}
+          </span>
+        </li>
+        <li style="margin-bottom: 10px;">
+          <span style="display: block; color: #aaa; font-size: 1.2em; font-weight: 400;">
+            <b style="text-transform: capitalize;">${fields[1]}:</b> ${email}
+          </span>
+        </li>
+        <li style="margin-bottom: 10px;">
+          <span style="display: block; color: #aaa; font-size: 1.2em; font-weight: 400;">
+            <b style="text-transform: capitalize;">${fields[2]}:</b> ${subject}
+          </span>
+        </li>
+        <li style="margin-bottom: 10px;">
+          <span style="display: block; color: #aaa; font-size: 1.2em; font-weight: 400;">
+            <b style="text-transform: capitalize;">${fields[3]}:</b> ${message}
+          </span>
+        </li>
+      </ul>
+    </body>
+    `,
+    };
+
+    transporter.sendMail(mail_configs, function (error, info) {
+      if (error) {
+        console.log(error);
+        return reject({ message: "an error occured" });
+      }
+      return resolve({ message: "email sent successfully" });
+    });
+  });
+}
+
+// VENDOR INFORMATION
+
+function vendorInfo({
+  company,
+  streetAddress,
+  aptSuiteBuilding,
+  city,
+  state,
+  postalCode,
+  country,
+  registration,
+  dateOfIncorporation,
+  paidUpShare,
+  authorizedShare,
+  tin,
+  bank,
+  account,
+  accountType,
+  phone,
+  mobile,
+  email,
+  yearsInBusiness,
+  natureOfBusiness,
+  registeredWithOtherOrg,
+  keyOrganisations,
+  workDetails,
+  organisation,
+  referenceStreet,
+  referenceApartment,
+  referenceCity,
+  referenceState,
+  referencePostal,
+  referenceCountry,
+  contactPerson,
+  contactPosition,
+  contactPhone,
+  referenceBusinessYears,
+  recipient_email,
+  fields,
+}) {
+  // console.log(recipient_email);
+
+  return new Promise((resolve, reject) => {
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: `${process.env.ATTIJARA_EMAIL}`,
+        pass: `${process.env.ATTIJARA_PASSWORD}`,
+      },
+    });
+
+    const mail_configs = {
+      from: process.env.ATTIJARA_EMAIL,
+      to: recipient_email,
+      subject: "Vendor Information Form",
+      text: "Contact",
+      html: `
+      <body>
+  <h2 style="margin-bottom: 20px;">Vendor Information</h2>
+  <table style="font-size: 1.1em; border-collapse: collapse; width: 100%; max-width: 500px; margin: 0 auto; text-align: left;">
+    <tbody>
+      <tr>
+        <td><b style="text-transform: capitalize;">${fields[0]}:</b></td>
+        <td>${company}</td>
+      </tr>
+      <tr>
+        <td><b style="text-transform: capitalize;">${fields[1]}:</b></td>
+        <td>${streetAddress}</td>
+      </tr>
+      <tr>
+        <td><b style="text-transform: capitalize;">${fields[2]}:</b></td>
+        <td>${aptSuiteBuilding}</td>
+      </tr>
+      <tr>
+        <td><b style="text-transform: capitalize;">${fields[3]}:</b></td>
+        <td>${city}</td>
+      </tr>
+      <tr>
+        <td><b style="text-transform: capitalize;">${fields[4]}:</b></td>
+        <td>${state}</td>
+      </tr>
+      <tr>
+        <td><b style="text-transform: capitalize;">${fields[5]}:</b></td>
+        <td>${postalCode}</td>
+      </tr>
+      <tr>
+        <td><b style="text-transform: capitalize;">${fields[6]}:</b></td>
+        <td>${country}</td>
+      </tr>
+      <tr>
+        <td><b style="text-transform: capitalize;">${fields[7]}:</b></td>
+        <td>${registration}</td>
+      </tr>
+      <tr>
+        <td><b style="text-transform: capitalize;">${fields[8]}:</b></td>
+        <td>${dateOfIncorporation}</td>
+      </tr>
+      <tr>
+      <td><b style="text-transform: capitalize;">${fields[9]}</b></td>
+      <td>${paidUpShare}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[10]}</b></td>
+      <td>${authorizedShare}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[11]}</b></td>
+      <td>${tin}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[12]}</b></td>
+      <td>${bank}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[13]}</b></td>
+      <td>${account}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[14]}</b></td>
+      <td>${accountType}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[15]}</b></td>
+      <td>${phone}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[16]}</b></td>
+      <td>${mobile}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[17]}</b></td>
+      <td>${email}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[18]}</b></td>
+      <td>${yearsInBusiness}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[19]}</b></td>
+      <td>${natureOfBusiness}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[20]}</b></td>
+      <td>${registeredWithOtherOrg}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[21]}</b></td>
+      <td>${keyOrganisations}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[22]}</b></td>
+      <td>${workDetails}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[23]}</b></td>
+      <td>${organisation}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[24]}</b></td>
+      <td>${referenceStreet}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[25]}</b></td>
+      <td>${referenceApartment}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[26]}</b></td>
+      <td>${referenceCity}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[27]}</b></td>
+      <td>${referenceState}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[28]}</b></td>
+      <td>${referencePostal}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[29]}</b></td>
+      <td>${referenceCountry}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[30]}</b></td>
+      <td>${contactPerson}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[31]}</b></td>
+      <td>${contactPosition}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[32]}</b></td>
+      <td>${contactPhone}</td>
+    </tr>
+    <tr>
+      <td><b style="text-transform: capitalize;">${fields[33]}</b></td>
+      <td>${referenceBusinessYears}</td>
+    </tr>
+    </tbody>
+  </table>
+</body>
+    `,
+    };
+
+    transporter.sendMail(mail_configs, function (error, info) {
+      if (error) {
+        console.log(error);
+        return reject({ message: "an error occured" });
+      }
+      return resolve({ message: "email sent successfully" });
+    });
+  });
+}
+
 module.exports = {
   sendEmail,
   sendHome,
@@ -411,4 +766,9 @@ module.exports = {
 
   // attijara
   contact,
+
+  //pac website
+  gettingStarted,
+  sendMessage,
+  vendorInfo,
 };

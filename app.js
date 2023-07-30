@@ -8,6 +8,9 @@ const {
   sendCorporate,
   sendFeedback,
   contact,
+  gettingStarted,
+  sendMessage,
+  vendorInfo,
 } = require("./modules/sendEmail");
 
 const path = require("path");
@@ -16,7 +19,7 @@ const app = express();
 
 app.use(express.static(path.join(__dirname + "/public")));
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 require("dotenv").config();
 
 // allows to send information from frontend to backend
@@ -85,4 +88,24 @@ app.listen(port, () =>
   console.log(`nodemailer is listening at http://localhost:${port}`)
 );
 
-// var email =
+// =====================================================================================
+// PAC WEBSITE ENDPOINTS
+// =====================================================================================
+
+app.post("/pacwebsite/getting-started", (req, res) => {
+  gettingStarted(req.body)
+    .then((response) => res.send(response.message))
+    .catch((error) => res.status(500).send(error.message));
+});
+
+app.post("/pacwebsite/send-message", (req, res) => {
+  sendMessage(req.body)
+    .then((response) => res.send(response.message))
+    .catch((error) => res.status(500).send(error.message));
+});
+
+app.post("/pacwebsite/vendor-info", (req, res) => {
+  vendorInfo(req.body)
+    .then((response) => res.send(response.message))
+    .catch((error) => res.status(500).send(error.message));
+});
